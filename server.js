@@ -35,10 +35,18 @@ app.use(
     })
 );
 
+// For this application, users must be signed in to view any of the routes associated with their pantry. Therefore, isSignedIn should come above the foods controller, but not before auth.
+app.use(passUserToView);
+
 app.get('/', (req, res) => {
-    res.render('index.ejs', {
-        user: req.session.user,
-    });
+    // Check if the user is signed in
+    if (req.session.user) {
+        // Redirect signed-in users to their foods index
+        res.redirect(`/users/${req.session.user._id}/foods`);
+    } else {
+        // Show the homepage for users who are not signed in
+        res.render('index.ejs');
+    }
 });
 
 app.get('/vip-lounge', (req, res) => {
@@ -49,8 +57,6 @@ app.get('/vip-lounge', (req, res) => {
     }
 });
 
-// For this application, users must be signed in to view any of the routes associated with their pantry. Therefore, isSignedIn should come above the foods controller, but not before auth.
-app.use(passUserToView);
 app.use('/auth', authController);
 app.use(isSignedIn);
 // use middleware to direct incoming requests to /users/:userId/foods to the foodsController
