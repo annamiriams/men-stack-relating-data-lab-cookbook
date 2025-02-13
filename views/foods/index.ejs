@@ -11,8 +11,6 @@
     <%- include ('../partials/_navbar.ejs') %>
     <h1>Welcome to <%= user.username %>'s pantry</h1>
 
-    <a href="/users/<%= user._id %>/foods/new">Add an item to your pantry</a>
-
     <ul>
         <% pantry.forEach((pantry)=> { %>
             <li>
@@ -34,6 +32,8 @@
             </li>
             <% }) %>
     </ul>
+
+    <a href="/users/<%= user._id %>/foods/new">Add an item to your pantry</a>
 
 </body>
 </html>

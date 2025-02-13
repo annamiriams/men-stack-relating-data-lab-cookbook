@@ -41,7 +41,7 @@ router.get('/:itemId', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id);
         const pantryItem = currentUser.pantry.id(req.params.itemId);
-        res.render('foods/show.ejs', { pantry: currentUser.pantry });
+        res.render('foods/show.ejs', { pantry: pantryItem });
     } catch (error) {
         console.log(error);
         res.redirect('/');
