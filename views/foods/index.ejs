@@ -14,20 +14,20 @@
     <ul>
         <% pantry.forEach((pantry)=> { %>
             <li>
-                <!-- <%= pantry.food %>
+                <%= pantry.food %>
 
-                <form action="/users/<%= user._id %>/foods/<%= pantry._id %> ?_method=DELETE" method="POST">
+                <form action="/users/<%= user._id %>/foods/<%= pantry._id %>?_method=DELETE" method="POST">
                     <button type="submit">Delete</button>
                 </form>
 
                 <form action="/users/<%= user._id %>/foods/<%= pantry._id %>/edit" method="GET">
                     <button type="submit">Edit</button>
-                </form> -->
+                </form>
 
                 <!-- commenting out the link because i dont actually think it's necessary here -->
-                <a href="/users/<%= user._id %>/foods/<%= pantry._id %>">
+                <!-- <a href="/users/<%= user._id %>/foods/<%= pantry._id %>">
                     <%= pantry.food %>
-                </a>
+                </a> -->
 
             </li>
             <% }) %>

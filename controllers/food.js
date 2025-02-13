@@ -36,20 +36,39 @@ router.post('/', async (req, res) => {
 });
 
 // SHOW
-router.get('/:itemId', async (req, res) => {
-    // res.send(`here is your request param: ${req.params.itemId}`);    
-    try {
-        const currentUser = await User.findById(req.session.user._id);
-        const pantryItem = currentUser.pantry.id(req.params.itemId);
-        res.render('foods/show.ejs', { pantry: pantryItem });
-    } catch (error) {
-        console.log(error);
-        res.redirect('/');
-    }
-});
+// router.get('/:itemId', async (req, res) => {
+//     // res.send(`here is your request param: ${req.params.itemId}`);    
+//     try {
+//         const currentUser = await User.findById(req.session.user._id);
+//         const pantryItem = currentUser.pantry.id(req.params.itemId);
+//         res.render('foods/show.ejs', { pantry: pantryItem });
+//     } catch (error) {
+//         console.log(error);
+//         res.redirect('/');
+//     }
+// });
 
 // UPDATE
 
 // DELETE
+router.delete('/:itemId', async (req, res) => {
+    // const currentUser = await User.findById(req.session.user._id);
+    // res.send(currentUser.pantry)
+    try {
+        // Look up the user from req.session
+        const currentUser = await User.findById(req.session.user._id);
+        // Use the Mongoose .deleteOne() method to delete
+        // a pantry item using the id supplied from req.params
+        currentUser.pantry.id(req.params.itemId).deleteOne();
+        // Save changes to the user
+        await currentUser.save();
+        // Redirect back to the index view
+        res.redirect(`/users/${currentUser._id}/foods`);
+    } catch (error) {
+        // If any errors, log them and redirect back home
+        console.log(error);
+        res.redirect('/');
+    }
+});
 
 module.exports = router;
