@@ -36,12 +36,20 @@ router.post('/', async (req, res) => {
 });
 
 // SHOW
-
-// EDIT
+router.get('/:itemId', async (req, res) => {
+    // res.send(`here is your request param: ${req.params.itemId}`);    
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const pantryItem = currentUser.pantry.id(req.params.itemId);
+        res.render('foods/show.ejs', { pantry: currentUser.pantry });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
 
 // UPDATE
 
 // DELETE
-
 
 module.exports = router;
