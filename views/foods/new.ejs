@@ -10,8 +10,8 @@
     <%- include('../partials/_navbar.ejs') %>
     <h1>Add food to your pantry</h1>
     <form action="/users/<%= user._id %>/foods" method="POST">
-        <label for="name">Food:</label>
-        <input type="text" name="name" id="name">
+        <label for="food">Food:</label>
+        <input type="text" name="food" id="food">
     
         <button type="submit">Add to pantry</button>
     </form>
