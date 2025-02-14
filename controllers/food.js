@@ -61,6 +61,18 @@ router.get('/:itemId/edit', async (req, res) => {
 });
 
 // UPDATE
+router.put('/:itemId', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const pantryItem = currentUser.pantry.id(req.params.itemId);
+        pantryItem.set(req.body);
+        await currentUser.save();
+        res.redirect(`/users/${currentUser._id}/foods`);
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
 
 // DELETE
 router.delete('/:itemId', async (req, res) => {
@@ -82,5 +94,6 @@ router.delete('/:itemId', async (req, res) => {
         res.redirect('/');
     }
 });
+
 
 module.exports = router;
