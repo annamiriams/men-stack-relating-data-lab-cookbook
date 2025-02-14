@@ -5,6 +5,10 @@ const foodSchema = new mongoose.Schema({
     food: {
         type: String,
         required: true
+    },
+    total: {
+        type: Number,
+        required: true
     }
 });
 

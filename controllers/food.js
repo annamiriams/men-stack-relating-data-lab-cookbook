@@ -48,6 +48,18 @@ router.post('/', async (req, res) => {
 //     }
 // });
 
+// EDIT
+router.get('/:itemId/edit', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const pantryItem = currentUser.pantry.id(req.params.itemId);
+        res.render(`foods/edit.ejs`, { pantry: pantryItem });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
+
 // UPDATE
 
 // DELETE

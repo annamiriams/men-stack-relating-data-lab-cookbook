@@ -14,7 +14,7 @@
     <ul>
         <% pantry.forEach((pantry)=> { %>
             <li>
-                <%= pantry.food %>
+                <%= pantry.food %> (total: <%= pantry.total %>)
 
                 <form action="/users/<%= user._id %>/foods/<%= pantry._id %>?_method=DELETE" method="POST">
                     <button type="submit">Delete</button>
