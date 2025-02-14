@@ -7,9 +7,8 @@
 </head>
 
 <body>
-    <!-- try ./partials if this doesnt work -->
     <%- include ('../partials/_navbar.ejs') %>
-    <h1>Welcome to <%= user.username %>'s pantry</h1>
+    <h1>Welcome to your pantry!</h1>
 
     <ul>
         <% pantry.forEach((pantry)=> { %>
@@ -23,12 +22,6 @@
                 <form action="/users/<%= user._id %>/foods/<%= pantry._id %>/edit" method="GET">
                     <button type="submit">Edit</button>
                 </form>
-
-                <!-- commenting out the link because i dont actually think it's necessary here -->
-                <!-- <a href="/users/<%= user._id %>/foods/<%= pantry._id %>">
-                    <%= pantry.food %>
-                </a> -->
-
             </li>
             <% }) %>
     </ul>

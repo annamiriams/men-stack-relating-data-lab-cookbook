@@ -35,6 +35,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+// based on the instructions, it doesnt actually seem like a show page is asked for...
 // SHOW
 // router.get('/:itemId', async (req, res) => {
 //     // res.send(`here is your request param: ${req.params.itemId}`);    

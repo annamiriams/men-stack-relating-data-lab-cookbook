@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const foodSchema = new mongoose.Schema({
-    // maybe this should be "name" instead of "food"?
     food: {
         type: String,
         required: true
