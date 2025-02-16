@@ -2,11 +2,14 @@
     <a href="/">Home</a>
     <!-- if a user is identified (ie not a guest), show both view my pantry and sign out -->
     <% if (user) { %>
-    <a href="/users/<%= user._id %>/foods">View Pantry</a>
+        <a href="/users/<%= user._id %>/foods">View Pantry</a>
+        <a href="/users">Explore Our Community</a>
         <a href="/auth/sign-out">Sign Out</a>
     <!-- if there is no identified user (ie guest), show options to sign in or sign up -->
     <% } else { %>
         <a href="/auth/sign-in">Sign In</a>
         <a href="/auth/sign-up">Sign Up</a>
     <% } %>
+
+    
 </nav>

@@ -14,7 +14,8 @@ const passUserToView = require('./middleware/pass-user-to-view.js');
 const authController = require('./controllers/auth.js');
 // import foodsController
 const foodsController = require('./controllers/food.js');
-
+// import usersController
+const usersController = require('./controllers/users.js');
 
 const port = process.env.PORT ? process.env.PORT : '3000';
 
@@ -61,6 +62,7 @@ app.use('/auth', authController);
 app.use(isSignedIn);
 // use middleware to direct incoming requests to /users/:userId/foods to the foodsController
 app.use('/users/:userId/foods', foodsController);
+app.use('/users', usersController);
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}!`);
