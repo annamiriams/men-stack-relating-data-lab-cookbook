@@ -6,6 +6,11 @@ const User = require('../models/user.js');
 // ROUTER LOGIC HERE
 // '/users/:userId/foods' --> beginning of the link because of the middleware in server.js
 
+// LANDING PAGE?? need to figure out how to adjust this code block to not interrupt the index get route
+// router.get('/', async (req, res) => {
+//     res.render('index.ejs');
+// });
+
 // INDEX
 router.get('/', async (req, res) => {
     // This line retrieves the current user from the database by using the User.findById() method. It fetches the user document based on the _id stored in the session (req.session.user._id). The await keyword ensures the server waits for the user data to be fetched from the database before continuing the next steps.
@@ -95,6 +100,5 @@ router.delete('/:itemId', async (req, res) => {
         res.redirect('/');
     }
 });
-
 
 module.exports = router;

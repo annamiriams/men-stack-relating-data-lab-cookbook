@@ -43,7 +43,9 @@ app.get('/', (req, res) => {
     // Check if the user is signed in
     if (req.session.user) {
         // Redirect signed-in users to their foods index
-        res.redirect(`/users/${req.session.user._id}/foods`);
+        // res.redirect(`/users/${req.session.user._id}/foods`);
+        // changed the redirect to this render because the nav bar was sending "home" and "view pantry" to the user's pantry. now home actually goes to the home page
+        res.render('index.ejs');
     } else {
         // Show the homepage for users who are not signed in
         res.render('index.ejs');
